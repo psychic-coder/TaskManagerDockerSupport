@@ -10,6 +10,7 @@ import orgRoutes from "./routes/org.routes.js"
 import userRoutes from "./routes/user.routes.js"
 import taskRoutes from "./routes/task.routes.js"
 import dashRoutes from "./routes/dashboard.routes.js"
+import notificationRoutes from "./routes/dashboard.routes.js"
 import cookieParser from "cookie-parser"
 
   
@@ -51,6 +52,7 @@ app.use("/api/org",orgRoutes);
 app.use("/api/user",userRoutes);
 app.use("/api/task",taskRoutes);
 app.use("/api/dash",dashRoutes);
+app.use("/api/notification",notificationRoutes);
 
 
   // your routes here
