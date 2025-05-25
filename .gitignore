@@ -1,0 +1,209 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+/generated/prisma
+# General
+.DS_Store
+
+
+
+*.log
+*.swp
+*.swo
+*.env
+*.env.local
+*.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.bak
+*.tmp
+*.orig
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Dependency directories
+node_modules/
+jspm_packages/
+bower_components/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Debug logs
+debug.log
+
+# Production
+build/
+dist/
+out/
+.next/
+.serverless/
+.turbo/
+
+# Frontend specific
+.cache/
+.vuepress/dist/
+.history/
+*.sass-cache
+*.css.map
+*.js.map
+*.stylelintcache
+.stylelintcache
+
+# Backend specific
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.class
+*.jar
+*.war
+*.ear
+*.db
+*.sqlite
+.hibernate_jpa_enhancer
+
+# Database
+*.db-journal
+*.sql
+*.sqlite-shm
+*.sqlite-wal
+dump.rdb
+
+# Editors
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# System Files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# macOS
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Windows
+[Dd]esktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Docker
+docker-compose.override.yml
+docker-data/
+
+# Kubernetes
+*-generated.yaml
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.terraform.lock.hcl
+
+# Serverless
+.serverless/
+
+# Compiled source
+*.com
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.a
+*.obj
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional Jest cache
+.jest_cache/
+
+# Optional Cypress
+cypress/screenshots/
+cypress/videos/
+
+# Storybook
+storybook-static/
+
+# Parcel
+.parcel-cache/
+
+# Svelte
+.svelte-kit/
+
+# Angular
+.angular/
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Temporary files created by tests
+*.actual
+*.expected
