@@ -23,6 +23,7 @@ model Organization {
   name         String
   users        User[]
   tasks        Task[]
+  invitations  Invitation[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
@@ -36,6 +37,7 @@ model User {
   organization   Organization @relation(fields: [organizationId], references: [id])
   organizationId String   @db.ObjectId
   tasks          Task[]   @relation("AssignedTasks")
+  invitations    Invitation[]
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
@@ -55,6 +57,19 @@ model Task {
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 }
+
+model Invitation {
+  id              String   @id @map("_id") @default(auto()) @db.ObjectId
+  token           String   @unique
+  organization    Organization @relation(fields: [organizationId], references: [id])
+  organizationId  String   @db.ObjectId
+  createdBy       User     @relation(fields: [createdById], references: [id])
+  createdById     String   @db.ObjectId
+  email           String?
+  createdAt       DateTime @default(now())
+  expiresAt       DateTime
+}
+
 
 enum Role {
   ADMIN

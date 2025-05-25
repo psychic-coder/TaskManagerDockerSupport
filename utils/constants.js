@@ -8,3 +8,7 @@ export const cookieOptions = {
     httpOnly: true,
     secure: true,
   };
+
+
+
+export const FRONTEND_URL=process.env.FRONTEND_URL||"https://yourfrontend.com"

@@ -1,5 +1,7 @@
 import { TryCatch } from "../middlewares/error.js";
+import { FRONTEND_URL } from "../utils/constants.js";
 import { prisma } from "../utils/helper.js";
+import { nanoid } from "nanoid";
 
 export const getOrganizationDetails = TryCatch(async (req, res) => {
   const { id } = req.params;
@@ -135,3 +137,39 @@ export const changeUserRole=TryCatch(async(req,res)=>{
     })
 
 })
+
+
+
+
+export const generateInvite = TryCatch(async (req, res) => {
+  const { organizationId, email } = req.body;
+
+  
+  const user = await prisma.user.findUnique({ where: { id: req.user.id } });
+
+  if (!user || (user.role !== "ADMIN")) {
+    return res.status(403).json({ message: "Unauthorized" });
+  }
+
+  const token = nanoid(32);
+  const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24); // 24 hours
+
+  const invite = await prisma.invitation.create({
+    data: {
+      token,
+      email,
+      organizationId: user.organizationId,
+      createdById: user.id,
+      expiresAt,
+    },
+  });
+
+  const inviteLink = `${FRONTEND_URL}/join/${token}`;
+
+  res.status(201).json({
+    message: "Invitation created",
+    inviteLink,
+    token,
+    success:true
+  });
+});

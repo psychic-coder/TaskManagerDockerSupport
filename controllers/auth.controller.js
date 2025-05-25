@@ -114,3 +114,34 @@ export const getMe=TryCatch(async (req, res)=>{
         user
     })
 })
+
+
+export const joinWithInvite = TryCatch(async (req, res) => {
+  const { token } = req.params;
+  const { name, email, password } = req.body;
+
+  const invite = await prisma.invitation.findUnique({ where: { token } });
+  if (!invite || invite.expiresAt < new Date()) {
+    return res.status(400).json({ message: "Invalid or expired invitation" });
+  }
+
+  const existingUser = await prisma.user.findUnique({ where: { email } });
+  if (existingUser) {
+    return res.status(400).json({ message: "User already exists" });
+  }
+
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = await prisma.user.create({
+    data: {
+      name,
+      email,
+      passwordHash,
+      role: "MEMBER",
+      organizationId: invite.organizationId,
+    },
+  });
+
+  const jwtToken = generateToken(user);
+  sendToken(res, 201, user, jwtToken, "User successfully joined via invite");
+});
