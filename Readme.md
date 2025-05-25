@@ -296,7 +296,7 @@ If this project helped you, please consider giving it a ⭐️!
 [![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge&logo=gitbook)](https://docs.example.com)
 [![Discord](https://img.shields.io/badge/Discord-Community-blurple?style=for-the-badge&logo=discord)](https://discord.gg/yourinvite)
 
-**Built with ❤️ by [Your Name](https://github.com/psychic-coder)**
+**Built with ❤️ by [psychic-coder](https://github.com/psychic-coder)**
 
 </div>
 
