@@ -6,6 +6,7 @@ import {errorMiddleware} from "./middlewares/error.js"
 import morgan from "morgan"
 import dotenv from "dotenv"
 import authRoutes from "./routes/auth.routes.js"
+import cookieParser from "cookie-parser"
 
   
   dotenv.config({path: './.env',});
@@ -28,9 +29,11 @@ app.use(
   })
 );
     
+
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors({origin:' * ',credentials:true}));
+app.use(cors());
 app.use(morgan('dev'))
     
   

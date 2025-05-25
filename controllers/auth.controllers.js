@@ -97,3 +97,20 @@ export const login = TryCatch(async (req, res) => {
   
     sendToken(res, 200,tokenData, token, "User logged in successfully");
   });
+
+export const getMe=TryCatch(async (req, res)=>{
+    const user=await prisma.user.findUnique({
+        where:{id:req.user.id},
+        select:{id:true,name:true,email:true,role:true,organizationId:true }
+    });
+    if(!user){
+        return res.status(404).json({
+            message:"User not found"
+        })
+    }
+
+    return res.status(200).json({
+        message:"User found",
+        user
+    })
+})
