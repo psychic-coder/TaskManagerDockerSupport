@@ -6,6 +6,7 @@ import {errorMiddleware} from "./middlewares/error.js"
 import morgan from "morgan"
 import dotenv from "dotenv"
 import authRoutes from "./routes/auth.routes.js"
+import orgRoutes from "./routes/org.routes.js"
 import cookieParser from "cookie-parser"
 
   
@@ -43,6 +44,7 @@ app.use(morgan('dev'))
   
 
 app.use("/api/auth",authRoutes);
+app.use("/api/org",orgRoutes);
 
 
   // your routes here

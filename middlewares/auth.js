@@ -6,7 +6,6 @@ import { JWT_SECRET } from '../utils/constants.js';
 export const isAuthenticated = TryCatch((req, res, next) => {
    
     const token = req.cookies["access_token"];
-    console.log(token);
     if (!token)
       return next(new ErrorHandler("Please login to access this route", 401));
   
@@ -17,3 +16,15 @@ export const isAuthenticated = TryCatch((req, res, next) => {
   
     next();
   });
+
+  export const authorizeRoles=(...allowedRoles)=>{
+    return (req,res,next)=>{
+      const {role} =req.user || {};
+      if(!role || !allowedRoles.includes(role)){
+        return res.status(403).json({
+          message:`Access denied. Required role ${allowedRoles.join(",")}`
+        });
+      }
+      next();
+    }
+  }
