@@ -8,6 +8,7 @@ import dotenv from "dotenv"
 import authRoutes from "./routes/auth.routes.js"
 import orgRoutes from "./routes/org.routes.js"
 import userRoutes from "./routes/user.routes.js"
+import taskRoutes from "./routes/task.routes.js"
 import cookieParser from "cookie-parser"
 
   
@@ -47,6 +48,7 @@ app.use(morgan('dev'))
 app.use("/api/auth",authRoutes);
 app.use("/api/org",orgRoutes);
 app.use("/api/user",userRoutes);
+app.use("/api/task",taskRoutes);
 
 
   // your routes here

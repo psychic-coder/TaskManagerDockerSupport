@@ -4,7 +4,7 @@ import { changeUserRole, generateInvite, getOrganizationDetails, listOrganizatio
 
 const router=express.Router();
 
-router.use(isAuthenticated,authorizeRoles("ADMIN"))
+router.use(isAuthenticated,authorizeRoles("ADMIN","MANAGER"))
 router.get("/:id",getOrganizationDetails);
 router.patch("/:id",updateOrganizationDetails);
 router.get("/:id/members",listOrganizationDetails);
